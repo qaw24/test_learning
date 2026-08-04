@@ -9,6 +9,7 @@ import random
 
 words = ['яблоко', 'банан', 'апельсин', 'ананас', 'арбуз', 'виноград', 'клубника', 'кокос', 'лимно', 'манго', 'персик']
 word = random.choice(words)
+letters = []
 
 chances = 6
 
@@ -26,9 +27,11 @@ while letter_guessed != list(word) and chances > 0:
         continue
     elif len(guess) > 1:
         print("Введите только одну букву.")
-    elif guess in letter_guessed:
-        print('Вы уже отгадали эту букву.')
+    elif guess in letters:
+        print('Вы уже отгадывали эту букву.')
         continue
+    
+    letters.append(guess)
     
     if guess in word:
         print('Буква угадана!')
