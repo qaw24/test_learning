@@ -13,6 +13,9 @@ score_computer = 0
 
 while score_computer<3 and score_user <3:
     element = input("Введите элемент (камень, ножницы или бумага): ")
+    if element not in options:
+        print("Вы ввели невалидное значение.")
+        continue
     option = random.choice(options)
     print(option)
     if element == option:
