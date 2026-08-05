@@ -12,10 +12,6 @@ show - напечатать все добавленные задачи.
 exit - закрыть программу."""
 
 
-# today = []
-# tomorrow = []
-# other = []
-
 tasks = {}
 
 while True:
@@ -23,10 +19,14 @@ while True:
     if command == "help":
         print(HELP)
     elif command == "show":
-        print("Планы: \n", tasks)
-        # print("Сеогдня\n", today)
-        # print("Завтра\n", tomorrow)
-        # print("Другие\n", other)
+        date = input("Введите дату, которую нужно отобразить: ")
+        if date in tasks:
+            print(f"Планы на дату {date}")
+            for task_date in tasks[date]:
+                print("- ", task_date)
+        else:
+            print("Такой даты нет!")
+            continue
     elif command == "add":
         date = input("Введите дату: ")
         task = input("Введите название задачи: ")
@@ -34,14 +34,7 @@ while True:
             tasks[date].append(task)
         else:
             tasks[date] = []
-            print(tasks)
             tasks[date].append(task)
-        # if date == "Сегодня":
-        #     today.append(task)
-        # elif date == "Завтра":
-        #     tomorrow.append(task)
-        # else:
-        #     other.apend(task)
         print(f"Задача {task} добавлена")
     elif command == "exit":
         print("Спасибо за использование! До свидания!")
