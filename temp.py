@@ -11,27 +11,37 @@ add - добавить задачу в список (название задач
 show - напечатать все добавленные задачи.
 exit - закрыть программу."""
 
-today = []
-tomorrow = []
-other = []
+
+# today = []
+# tomorrow = []
+# other = []
+
+tasks = {}
 
 while True:
     command = input("Введите команду: ")
     if command == "help":
         print(HELP)
     elif command == "show":
-        print("Сеогдня\n", today)
-        print("Завтра\n", tomorrow)
-        print("Другие\n", other)
+        print("Планы: \n", tasks)
+        # print("Сеогдня\n", today)
+        # print("Завтра\n", tomorrow)
+        # print("Другие\n", other)
     elif command == "add":
         date = input("Введите дату: ")
         task = input("Введите название задачи: ")
-        if date == "Сегодня":
-            today.append(task)
-        elif date == "Завтра":
-            tomorrow.append(task)
+        if date in tasks:
+            tasks[date].append(task)
         else:
-            other.apend(task)
+            tasks[date] = []
+            print(tasks)
+            tasks[date].append(task)
+        # if date == "Сегодня":
+        #     today.append(task)
+        # elif date == "Завтра":
+        #     tomorrow.append(task)
+        # else:
+        #     other.apend(task)
         print(f"Задача {task} добавлена")
     elif command == "exit":
         print("Спасибо за использование! До свидания!")
