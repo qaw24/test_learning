@@ -8,18 +8,25 @@ This is a temporary script file.
 HELP = """
 help - напечатать справку по программе.
 add - добавить задачу в список (название задачи запрашиваем у пользователя).
-show - напечатать все добавленные задачи."""
+show - напечатать все добавленные задачи.
+exit - закрыть программу."""
 
 tasks = []
 
-command = input("Введите команду: ")
-if command == "help":
-    print(HELP)
-elif command == "show":
-    print(tasks)
-elif command == "add":
-    task = input("Введите название задачи: ")
-    tasks.append(task)
-    print("Задача добавлена")
-else:
-    print("Неизвестная команда")
+while True:
+    command = input("Введите команду: ")
+    if command == "help":
+        print(HELP)
+    elif command == "show":
+        print(tasks)
+    elif command == "add":
+        task = input("Введите название задачи: ")
+        tasks.append(task)
+        print("Задача добавлена")
+    elif command == "exit":
+        print("Спасибо за использование! До свидания!")
+        break
+    else:
+        print("Неизвестная команда. Введите валидную команду.")
+        continue
+        
